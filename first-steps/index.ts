@@ -15,7 +15,7 @@ app.get('/bmi', (req, res) => {
     res.json({ status: 400, msg: 'Too many parameters' });
   }
   const validParams = ['height', 'weight'];
-  let notRecognized: String[] = [];
+  let notRecognized: string[] = [];
   queries.forEach(
     (q) => !validParams.includes(q) && (notRecognized = [...notRecognized, q])
   );

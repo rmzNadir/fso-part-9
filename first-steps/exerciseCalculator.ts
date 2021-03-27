@@ -6,7 +6,7 @@ interface Rating {
 interface ExercisesInfo {
   periodLength: number;
   trainingDays: number;
-  success: Boolean;
+  success: boolean;
   rating: number;
   ratingDescription: string;
   target: number;
@@ -85,5 +85,7 @@ try {
   const result = calculateExercises(hoursPerDay, target);
   console.log(result);
 } catch (e) {
-  console.log('Error: ', e.message);
+  if (e instanceof Error) {
+    console.log('Error: ', e.message);
+  }
 }

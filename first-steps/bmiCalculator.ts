@@ -47,7 +47,9 @@ try {
   const result = calculateBmi(height, weight);
   console.log(result);
 } catch (e) {
-  console.log('Error: ', e.message);
+  if (e instanceof Error) {
+    console.log('Error: ', e.message);
+  }
 }
 
 export default calculateBmi;
