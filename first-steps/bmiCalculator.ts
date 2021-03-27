@@ -19,20 +19,21 @@ const parseBMIArguments = (args: Array<string>): BmiCalcInput => {
 
 const calculateBmi = (height: number, weight: number): string => {
   const BMI: number = weight / Math.pow(height / 100, 2);
+
   switch (true) {
     case BMI < 15:
       return 'Very severely underweight';
-    case BMI > 15 && BMI < 16:
+    case BMI > 15 && BMI <= 16:
       return 'Severely underweight';
-    case BMI > 16 && BMI < 18.5:
+    case BMI > 16 && BMI <= 18.5:
       return 'Underweight';
-    case BMI > 18.5 && BMI < 25:
+    case BMI > 18.5 && BMI <= 25:
       return 'Normal (healthy weight)';
-    case BMI > 25 && BMI < 30:
+    case BMI > 25 && BMI <= 30:
       return 'Overweight';
-    case BMI > 30 && BMI < 35:
+    case BMI > 30 && BMI <= 35:
       return 'Obese Class I (Moderately obese)	';
-    case BMI > 35 && BMI < 40:
+    case BMI > 35 && BMI <= 40:
       return 'Obese Class II (Severely obese)';
     case BMI > 40:
       return 'Obese Class III (Very severely obese)	';
@@ -48,3 +49,5 @@ try {
 } catch (e) {
   console.log('Error: ', e.message);
 }
+
+export default calculateBmi;
