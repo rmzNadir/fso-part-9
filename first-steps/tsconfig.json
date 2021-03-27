@@ -1,6 +1,16 @@
 {
   "compilerOptions": {
+    "lib": ["es2019"],
     "noImplicitAny": true,
-    "lib": ["es2019"]
+    "noImplicitReturns": true,
+    "strictNullChecks": true,
+    "strictPropertyInitialization": true,
+    "strictBindCallApply": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noImplicitThis": true,
+    "alwaysStrict": true,
+    "esModuleInterop": true,
+    "declaration": true
   }
 }

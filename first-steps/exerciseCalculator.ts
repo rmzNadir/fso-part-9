@@ -62,6 +62,8 @@ const calculateExercises = (
         return { value: 2, description: 'Try harder, you can do it!' };
       case avg < target * 0.8:
         return { value: 1, description: 'Did you even try? lol.' };
+      default:
+        return { value: 0, description: 'Did you even try? lol.' };
     }
   };
 
@@ -71,8 +73,8 @@ const calculateExercises = (
     periodLength,
     trainingDays,
     success,
-    rating: rating.value,
-    ratingDescription: rating.description,
+    rating: rating?.value,
+    ratingDescription: rating?.description,
     target,
     average,
   };

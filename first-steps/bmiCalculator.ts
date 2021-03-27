@@ -36,6 +36,8 @@ const calculateBmi = (height: number, weight: number): string => {
       return 'Obese Class II (Severely obese)';
     case BMI > 40:
       return 'Obese Class III (Very severely obese)	';
+    default:
+      return 'Something went wrong...';
   }
 };
 
