@@ -89,3 +89,5 @@ try {
     console.log('Error: ', e.message);
   }
 }
+
+export default calculateExercises;
