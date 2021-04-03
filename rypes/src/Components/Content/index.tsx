@@ -1,5 +1,5 @@
 import React from 'react';
-import ContentItem from './ContentItem';
+import Part from './Part';
 import { CoursePart } from '../../types';
 
 interface props {
@@ -10,7 +10,7 @@ const index: React.FC<props> = ({ courseParts }) => {
   return (
     <>
       {courseParts.map((p, i) => (
-        <ContentItem key={i} coursePart={p} />
+        <Part key={i} coursePart={p} />
       ))}
     </>
   );
