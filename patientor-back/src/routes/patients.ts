@@ -1,5 +1,9 @@
 import express from 'express';
-import { getPatients, addPatient } from '../services/patientService';
+import {
+  getPatients,
+  addPatient,
+  getPatientById,
+} from '../services/patientService';
 import { toNewPatient } from '../utils';
 
 const router = express.Router();
@@ -17,6 +21,10 @@ router.post('/', (req, res) => {
   } catch (e) {
     res.status(400).send(e.message);
   }
+});
+
+router.get('/:id', (req, res) => {
+  res.status(200).send(getPatientById(req.params.id));
 });
 
 export default router;

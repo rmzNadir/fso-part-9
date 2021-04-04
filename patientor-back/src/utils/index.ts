@@ -59,6 +59,7 @@ type Fields = {
   dateOfBirth: unknown;
   occupation: unknown;
   gender: unknown;
+  entries: [];
 };
 
 export const toNewPatient = ({
@@ -67,6 +68,7 @@ export const toNewPatient = ({
   dateOfBirth,
   occupation,
   gender,
+  entries,
 }: Fields): NewPatient => {
   const newPatient: NewPatient = {
     name: parseName(name),
@@ -74,6 +76,7 @@ export const toNewPatient = ({
     dateOfBirth: parseBirth(dateOfBirth),
     occupation: parseOccupation(occupation),
     gender: parseGender(gender),
+    entries: entries,
   };
 
   return newPatient;
