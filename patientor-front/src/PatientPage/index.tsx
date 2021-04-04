@@ -14,6 +14,9 @@ const PatientPage: React.FC = () => {
   const [isLoading, setIsLoading] = useState(false);
   const lastFetched = useRef<string>('');
 
+  const patient = patients[id];
+  // console.log('patient', patient);
+
   useEffect(() => {
     const getPatient = async () => {
       setIsLoading(true);
@@ -33,9 +36,6 @@ const PatientPage: React.FC = () => {
       void getPatient();
     }
   }, [id, dispatch]);
-
-  const patient = patients[id];
-  // console.log('patient', patient);
 
   if (isLoading) {
     return (
