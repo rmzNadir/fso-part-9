@@ -15,7 +15,7 @@ const PatientPage: React.FC = () => {
   const lastFetched = useRef<string>('');
 
   const patient = patients[id];
-  // console.log('patient', patient);
+  console.log('patient', patient);
 
   useEffect(() => {
     const getPatient = async () => {
@@ -71,6 +71,27 @@ const PatientPage: React.FC = () => {
       }
       <div>ssn: {patient.ssn}</div>
       <div>occupation: {patient.occupation}</div>
+      {patient.entries && (
+        <>
+          <br />
+          <br />
+          <div>
+            <h3>Entries</h3>
+            {patient.entries.map(({ date, description, ...rest }, i) => (
+              <div key={i}>
+                {date} <i>{description}</i>
+                {rest.diagnosisCodes && (
+                  <ul>
+                    {rest.diagnosisCodes.map((c, i) => (
+                      <li key={i}>{c}</li>
+                    ))}
+                  </ul>
+                )}
+              </div>
+            ))}
+          </div>
+        </>
+      )}
     </div>
   );
 };
