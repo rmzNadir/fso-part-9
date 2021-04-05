@@ -8,14 +8,18 @@ import { useStateValue } from '../state';
 import { updatePatient } from '../state/reducer';
 import { Patient } from '../types';
 
+import Entries from './Entries';
+
 const PatientPage: React.FC = () => {
-  const { id } = useParams<{ id: string }>();
-  const [{ patients }, dispatch] = useStateValue();
   const [isLoading, setIsLoading] = useState(false);
+
   const lastFetched = useRef<string>('');
 
+  const { id } = useParams<{ id: string }>();
+
+  const [{ patients }, dispatch] = useStateValue();
+
   const patient = patients[id];
-  console.log('patient', patient);
 
   useEffect(() => {
     const getPatient = async () => {
@@ -24,6 +28,7 @@ const PatientPage: React.FC = () => {
         const { data: patientFromApi } = await axios.get<Patient>(
           `${apiBaseUrl}/patients/${id}`
         );
+
         dispatch(updatePatient(patientFromApi));
         lastFetched.current = id;
       } catch (e) {
@@ -72,25 +77,7 @@ const PatientPage: React.FC = () => {
       <div>ssn: {patient.ssn}</div>
       <div>occupation: {patient.occupation}</div>
       {patient.entries && (
-        <>
-          <br />
-          <br />
-          <div>
-            <h3>Entries</h3>
-            {patient.entries.map(({ date, description, ...rest }, i) => (
-              <div key={i}>
-                {date} <i>{description}</i>
-                {rest.diagnosisCodes && (
-                  <ul>
-                    {rest.diagnosisCodes.map((c, i) => (
-                      <li key={i}>{c}</li>
-                    ))}
-                  </ul>
-                )}
-              </div>
-            ))}
-          </div>
-        </>
+        <Entries style={{ marginTop: '25px' }} entries={patient.entries} />
       )}
     </div>
   );

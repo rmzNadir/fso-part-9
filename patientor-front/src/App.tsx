@@ -5,8 +5,8 @@ import { Button, Divider, Header, Container } from 'semantic-ui-react';
 
 import { apiBaseUrl } from './constants';
 import { useStateValue } from './state';
-import { Patient } from './types';
-import { setPatientList } from './state/reducer';
+import { Patient, Diagnosis } from './types';
+import { setPatientList, setDiagnosesList } from './state/reducer';
 
 import PatientListPage from './PatientListPage';
 import PatientPage from './PatientPage';
@@ -21,6 +21,12 @@ const App = () => {
         const { data: patientListFromApi } = await axios.get<Patient[]>(
           `${apiBaseUrl}/patients`
         );
+
+        const { data: diagnosesFromApi } = await axios.get<Diagnosis[]>(
+          `${apiBaseUrl}/diagnoses`
+        );
+
+        dispatch(setDiagnosesList(diagnosesFromApi));
         dispatch(setPatientList(patientListFromApi));
       } catch (e) {
         console.error(e);
