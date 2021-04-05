@@ -76,7 +76,7 @@ const PatientPage: React.FC = () => {
       }
       <div>ssn: {patient.ssn}</div>
       <div>occupation: {patient.occupation}</div>
-      {patient.entries && (
+      {patient.entries.length > 0 && (
         <Entries style={{ marginTop: '25px' }} entries={patient.entries} />
       )}
     </div>

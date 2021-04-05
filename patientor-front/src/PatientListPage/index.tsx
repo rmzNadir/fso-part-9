@@ -1,7 +1,6 @@
 import React from 'react';
 import axios from 'axios';
 import { Container, Table, Button } from 'semantic-ui-react';
-
 import { PatientFormValues } from '../AddPatientModal/AddPatientForm';
 import AddPatientModal from '../AddPatientModal';
 import { Patient } from '../types';
@@ -9,9 +8,11 @@ import { apiBaseUrl } from '../constants';
 import HealthRatingBar from '../components/HealthRatingBar';
 import { useStateValue } from '../state';
 import { addPatient } from '../state/reducer';
+import { useHistory } from 'react-router';
 
 const PatientListPage = () => {
   const [{ patients }, dispatch] = useStateValue();
+  const history = useHistory();
 
   const [modalOpen, setModalOpen] = React.useState<boolean>(false);
   const [error, setError] = React.useState<string | undefined>();
@@ -59,6 +60,12 @@ const PatientListPage = () => {
               <Table.Cell>{patient.occupation}</Table.Cell>
               <Table.Cell>
                 <HealthRatingBar showText={false} rating={1} />
+              </Table.Cell>
+              <Table.Cell textAlign='center'>
+                <Button
+                  icon='eye'
+                  onClick={() => history.push(`/patients/${patient.id}`)}
+                />
               </Table.Cell>
             </Table.Row>
           ))}
