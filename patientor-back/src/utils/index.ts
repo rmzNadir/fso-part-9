@@ -214,7 +214,7 @@ export const toNewEntry = (values: NewEntryFields): NewEntry => {
     case Entries.Hospital:
       const newHospitalEntry = {
         ...newBaseEntry,
-        NewBaseEntrydischarge: parseDischarge(values.discharge),
+        discharge: parseDischarge(values.discharge),
       };
       return newHospitalEntry;
     case Entries.OccupationalHealthcare:
